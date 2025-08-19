@@ -1,0 +1,56 @@
+<!-- Exemple de tableau pour listEtudiant.html -->
+<!DOCTYPE html>
+<html xmlns: th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des étudiants</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #0e82e7; padding: 8px; text-align: center; }
+        th { background-color: #3886f2; }
+        tr:hover { background-color: #307eea; }
+        .actions button { margin: 0 2px; }
+        .search-bar { margin-bottom: 20px; }
+        .search-bar input[type="text"] { padding: 6px; width: 250px; }
+        .search-bar button {background-color: #307eea; padding: 6px 12px; }
+    </style>
+</head>
+<body>
+    <h2>Liste des étudiants</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Filiere</th>
+                <th>Niveau</th>
+                <th>Nationnalite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="etudiant : ${listeParNom}">
+                <td th:text="${etudiant.id}"></td>
+                <td th:text="${etudiant.prenom}"></td>
+                <td th:text="${etudiant.nom}"></td>
+                <td th:text="${etudiant.tel}"></td>
+                <td th:text="${etudiant.filiere}"></td>
+                <td th:text="${etudiant.niveau}"></td>
+                <td th:text="${etudiant.nationalite}"></td>
+                <td class="actions">
+                    <a th:href="@{'/etudiant/edit/' + ${etudiant.id}}"><button style="background-color: #8fbaf6;">Edit</button></a>
+                    <a th:href="@{'/etudiant/detail/' + ${etudiant.id}}"><button style="background-color: #8fbaf6;" >Detail</button></a>
+                    <a th:href="@{'/etudiant/delete/' + ${etudiant.id}}" onclick="return confirm('Supprimer cet étudiant ?');"><button style="background-color: #8fbaf6;">Delete</button></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<div>
+			<a th:href="@{/liste}"> Retour </a>
+		</div>
+</body>
+</html>

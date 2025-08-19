@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html  xmlns: th="http://www.thymeleaf.org" lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire Étudiant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(47, 153, 255);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background: rgb(254, 255, 255);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      background-color: #3498db;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Formulaire Étudiant</h2>
+    <form th:action="@{/etudiantForm/save}" th:object="${etudiant}" method="post">
+      <div th:if="${param.success}">
+			<div> 
+				Enregistrement effectué avec succès !
+			</div>
+		 </div>
+      <label for="prenom">Prénom</label>
+      <input type="text" th:field="*{prenom}" id="prenom" name="prenom" required>
+
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" th:field="*{nom}" name="nom" required>
+
+      <label for="tel">Téléphone</label>
+      <input type="tel" id="tel" name="tel" th:field="*{tel}" required  placeholder="ex: 0600000000">
+
+      <label for="filiere">Filière</label>
+      <input type="text" id="filiere" th:field="*{filiere}" name="filiere" required>
+
+      <label for="niveau">Niveau</label>
+      <select id="niveau" th:field="*{niveau}" name="niveau" required>
+        <option value="">-- Sélectionner --</option>
+        <option value="Licence 1">Licence 1</option>
+        <option value="Licence 2">Licence 2</option>
+        <option value="Licence 3">Licence 3</option>
+        <option value="Master 1">Master 1</option>
+        <option value="Master 2">Master 2</option>
+      </select>
+
+      <label for="nationalite">Nationalité</label>
+      <input type="text" id="nationalite" th:field="*{nationalite}" name="nationnalite" required>
+
+      <button type="submit">AJOUTER
+		
+	  </button>
+    </form>
+  </div>
+
+</body>
+</html>

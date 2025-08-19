@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail de l'étudiant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(47, 153, 255);
+            margin: 0;
+            padding: 0;
+        }
+        .info { background-color: #f2f2f2; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; }
+        h2 { text-align: center; }
+        p { font-size: 16px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>Détails de l'étudiant</h2>
+        <p><strong>ID:</strong> <span th:text="${etudiant.id}"></span></p>
+        <p><strong>Prénom:</strong> <span th:text="${etudiant.prenom}"></span></p>
+        <p><strong>Nom:</strong> <span th:text="${etudiant.nom}"></span></p>
+        <p><strong>Téléphone:</strong> <span th:text="${etudiant.tel}"></span></p>
+        <p><strong>Filière:</strong> <span th:text="${etudiant.filiere}"></span></p>
+        <p><strong>Niveau:</strong> <span th:text="${etudiant.niveau}"></span></p>
+        <p><strong>Nationalité:</strong> <span th:text="${etudiant.nationalite}"></span></p>
+        <a th:href="@{/listEtudiant}"><button style="background-color: #8fbaf6;">← Retour à la liste</button></a>
+    </div>
+</body>
+</html>
